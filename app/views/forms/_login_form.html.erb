@@ -1,9 +1,7 @@
-<%= form_for @teacher do |f| %>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
+<%= form_for user, :url => "/signin/#{user.class.to_s.downcase}" do |f| %>
     <%= f.label :email %><br>
     <%= f.text_field :email %><br>
     <%= f.label :password %><br>
     <%= f.password_field :password %><br>
-    <%= f.submit %>
+    <%= f.submit "Log In" %>
 <%end%>
