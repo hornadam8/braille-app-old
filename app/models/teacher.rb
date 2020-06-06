@@ -7,4 +7,5 @@ class Teacher < ApplicationRecord
     validates_presence_of :name,:password,:email
     validates_uniqueness_of :email
     validates_with EmailValidator
+
 end
