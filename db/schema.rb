@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(version: 2020_06_06_123316) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "cohort_students", force: :cascade do |t|
+    t.integer "cohort_id"
+    t.integer "student_id"
+  end
+
   create_table "cohorts", force: :cascade do |t|
     t.string "name"
     t.integer "teacher_id"
