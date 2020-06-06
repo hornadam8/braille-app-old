@@ -44,7 +44,7 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails'
+  gem "factory_bot_rails"
   gem 'database_cleaner'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'

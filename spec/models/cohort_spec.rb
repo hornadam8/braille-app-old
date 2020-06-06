@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-Rspec.describe Cohort, type: :model do
+RSpec.describe Cohort, type: :model do
 end

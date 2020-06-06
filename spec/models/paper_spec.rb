@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-Rspec.describe Paper, type: :model do
+RSpec.describe Paper, type: :model do
 end

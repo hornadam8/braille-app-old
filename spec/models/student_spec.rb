@@ -1,4 +1,4 @@
 require 'rails_helper'
 
-Rspec.describe Student, type: :model do
+RSpec.describe Student, type: :model do
 end
