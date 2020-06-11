@@ -1,11 +1,13 @@
 class Teacher < ApplicationRecord
+
+    belongs_to :user
     has_many :cohorts
     has_many :assignments, through: :cohorts
     has_many :students, through: :cohorts
-
-    has_secure_password
-    validates_presence_of :name,:password,:email
-    validates_uniqueness_of :email
-    validates_with EmailValidator
+    has_many :teacheraccesscodes
+    has_many :schools, through: :teacheraccesscodes
+    def name
+        self.user.name
+    end
 
 end

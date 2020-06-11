@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_06_181808) do
+ActiveRecord::Schema.define(version: 2020_06_08_174443) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "assignments", force: :cascade do |t|
     t.string "name"
@@ -39,20 +45,40 @@ ActiveRecord::Schema.define(version: 2020_06_06_181808) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "students", force: :cascade do |t|
+  create_table "schools", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "type"
+    t.string "abbreviation"
+    t.string "admin_code"
+    t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "students", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teacheraccesscodes", force: :cascade do |t|
+    t.integer "school_id"
+    t.integer "teacher_id"
+    t.string "code"
+  end
+
   create_table "teachers", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.string "type"
+    t.string "role"
+    t.integer "student_id"
+    t.integer "teacher_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

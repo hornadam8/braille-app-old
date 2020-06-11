@@ -1,12 +1,16 @@
-<%= form_with url: "/signin",method: "post", model: @user do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :role %><br>
     <%= f.select :role, options_for_select([["Student","student"],["Teacher","teacher"],["School Admin","admin"]], "student")%><br>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
     <%= f.label :email %><br>
     <%= f.text_field :email %><br>
     <%= f.label :password %><br>
     <%= f.password_field :password %><br>
     <p>This field is only necessary for Teachers and Admins:</p><br>
-    <%= f.label :school%>
-    <%= f.collection_select :school, School.all, :id, :name%><br>
-    <%= f.submit "Log In" %>
+    <%= f.label :schools%>
+    <%= f.collection_select School.all,:id,:name%><br>
+    <%= f.label :access_code %><br>
+    <%= f.text_field :access_code%><br>
+    <%= f.submit %>
 <%end%>
