@@ -1,9 +1,11 @@
 class User < ApplicationRecord
     has_one :student
     has_one :teacher
+    has_one :admin
 
     has_secure_password
     validates_presence_of :name,:password,:email
+    
     validates_uniqueness_of :email
     validates_with EmailValidator
 
@@ -16,6 +18,9 @@ class User < ApplicationRecord
         elsif user.role == "student"
             s = Student.find_or_create_by(user_id: user.id)
             user.update_attribute(:student_id, s.id)
+        elsif user.role == "admin"
+            a = Admin.find_or_create_by(user_id: user.id)
+            user.update_attribute(:admin_id, a.id)
         end
     end
 
@@ -24,6 +29,8 @@ class User < ApplicationRecord
             teacher_id
         elsif role == "student"
             student_id
+        elsif role == "admin"
+            admin_id
         end
     end
 

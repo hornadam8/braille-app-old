@@ -1,6 +1,7 @@
 class Teacher < ApplicationRecord
 
     belongs_to :user
+    belongs_to :school
     has_many :cohorts
     has_many :assignments, through: :cohorts
     has_many :students, through: :cohorts
