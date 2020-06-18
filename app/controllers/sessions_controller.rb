@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
         @user = User.find_by(email: params[:user][:email])
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            @school = School.find(params[:school_id])
-            @user.update_attribute(role: params[:user][:role], school: @school)
+            school = School.find(params.require(:user).permit([:school_id])
+            @user.update_attribute(role: params[:user][:role], school: school)
             redirect_to user_path(@user)
         else
             @user = User.new(user_params)
