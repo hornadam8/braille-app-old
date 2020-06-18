@@ -1,4 +1,6 @@
 
+require 'pry'
+
 class UsersController < ApplicationController
 
     before_action :set_user, only: [:show]
@@ -24,7 +26,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:role,:name,:email,:password)
+        params.require(:user).permit(:role,:name,:email,:password,:school_id)
     end
 
 end

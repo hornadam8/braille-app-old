@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
     has_secure_password
     validates_presence_of :name,:password,:email
-    
+
     validates_uniqueness_of :email
     validates_with EmailValidator
 
@@ -25,12 +25,44 @@ class User < ApplicationRecord
     end
 
     def role_id
+        
         if role == "teacher"
             teacher_id
         elsif role == "student"
             student_id
         elsif role == "admin"
             admin_id
+        end
+
+    end
+
+    def school
+        if role == "teacher"
+            teacher = Teacher.find_or_create_by(user_id: id)
+            teacher.school
+        elsif role == "admin"
+            admin = Admin.find_or_create_by(user_id: id)
+            admin.school
+        end
+    end
+
+    def school_id
+        if role == "teacher"
+            teacher = Teacher.find_or_create_by(user_id: id)
+            teacher.school_id
+        elsif role == "admin"
+            admin = Admin.find_or_create_by(user_id: id)
+            admin.school_id
+        end
+    end
+
+    def school_id=(x)
+        if role == "teacher"
+            teacher = Teacher.find_or_create_by(user_id: id)
+            teacher.school_id = x
+        elsif role == "admin"
+            admin = Admin.find_or_create_by(user_id: id)
+            admin.school_id = x
         end
     end
 

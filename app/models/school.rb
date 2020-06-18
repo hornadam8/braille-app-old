@@ -1,7 +1,8 @@
 class School < ApplicationRecord
     has_one :admin
-    has_many :teacheraccesscodes
-    has_many :teachers, through: :teacheraccesscodes
+    has_many :teachers
+    #has_many :teacheraccesscodes
+    #has_many :teachers, through: :teacheraccesscodes
 
     def teacher_emails
         []
