@@ -4,8 +4,4 @@ class SchoolsController < ApplicationController
 
     end
 
-    private
-
-    
-
 end

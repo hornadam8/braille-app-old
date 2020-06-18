@@ -4,7 +4,7 @@
     <%= f.label :password %><br>
     <%= f.password_field :password %><br>
     <p>This field is only necessary for Teachers and Admins:</p><br>
-    <%= f.label :school%>
-    <%= f.collection_select :school, School.all, :id, :name%><br>
+    <%= f.label :school %>
+    <%= f.collection_select :school, School.all, :id, :name %><br>
     <%= f.submit "Log In" %>
 <%end%>

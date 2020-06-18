@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     end
 
     def user_params
-        params.require(:user).permit(:role,:name,:email,:password)
+        params.require(:user).permit(:role,:name,:email,:password,:school)
     end
 
 end

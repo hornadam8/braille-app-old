@@ -37,6 +37,7 @@ class User < ApplicationRecord
     end
 
     def school
+
         if role == "teacher"
             teacher = Teacher.find_or_create_by(user_id: id)
             teacher.school
@@ -44,6 +45,19 @@ class User < ApplicationRecord
             admin = Admin.find_or_create_by(user_id: id)
             admin.school
         end
+        
+    end
+
+    def school=(x)
+
+        if role == "teacher"
+            teacher = Teacher.find_or_create_by(user_id: id)
+            teacher.school = x
+        elsif role == "admin"
+            admin = Admin.find_or_create_by(user_id: id)
+            admin.school = x
+        end
+
     end
 
     def school_id

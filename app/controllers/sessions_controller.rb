@@ -6,25 +6,26 @@ class SessionsController < ApplicationController
     end
 
     def create
+
         @user = User.find_by(email: params[:user][:email])
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id
-            @user.update_attribute(role: params[:user][:role])
+            @school = School.find(params[:school_id])
+            @user.update_attribute(role: params[:user][:role], school: @school)
             redirect_to user_path(@user)
         else
             @user = User.new(user_params)
             render :new
         end
+
     end
+
+
 
     def logout
         session.clear
         redirect_to "/"
     end
-
-   
-
-   
 
 
 end
