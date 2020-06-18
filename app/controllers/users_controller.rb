@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     end
 
     def show
+        
+    end
+
+    def index
+        
     end
 
     private

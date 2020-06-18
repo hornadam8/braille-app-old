@@ -27,8 +27,9 @@ Rails.application.routes.draw do
   end
 
   resources :admin, only: [:show, :new, :create, :update, :edit, :destroy] do
-    resources :schools, only: [:show,:edit,:update]
   end
+
+  resources :schools, only: [:show]
   
 
   
